@@ -21,7 +21,7 @@
           <td>Name</td>
           <td>Email</td>
           <td>Phone</td>
-          <td>Password</td>
+     
           <td class="text-center">Action</td>
         </tr>
     </thead>
@@ -32,7 +32,7 @@
             <td>{{$learner->name}}</td>
             <td>{{$learner->email}}</td>
             <td>{{$learner->phone}}</td>
-            <td>{{$learner->password}}</td>
+          
             <td class="text-center">
                 <a href="{{ route('learners.edit', $learner->id)}}" class="btn btn-primary btn-sm">Edit</a>
                 <form action="{{ route('learners.destroy', $learner->id)}}" method="post" style="display: inline-block">

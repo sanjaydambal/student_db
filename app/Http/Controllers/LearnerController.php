@@ -34,7 +34,7 @@ class LearnerController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|max:255',
             'phone' => 'required|numeric',
-            'password' => 'required|max:255',
+            
         ]);
         $learner = Learner::create($storeData); // Update class name to use uppercase 'L'
         return redirect('/learners')->with('completed', 'Learner has been saved!');
@@ -66,9 +66,9 @@ class LearnerController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|max:255',
             'phone' => 'required|numeric',
-            'password' => 'required|max:255',
+            
         ]);
-        Learner::whereId($id)->update($updateData); // Update class name to use uppercase 'L'
+        Learner::whereId($id)->update($updateData); 
         return redirect('/learners')->with('completed', 'Learner has been updated');
     }
 
@@ -77,7 +77,7 @@ class LearnerController extends Controller
      */
     public function destroy(string $id)
     {
-        $learner = Learner::findOrFail($id); // Update class name to use uppercase 'L'
+        $learner = Learner::findOrFail($id); 
         $learner->delete();
         return redirect('/learners')->with('completed', 'Learner has been deleted');
     }

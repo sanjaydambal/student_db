@@ -37,10 +37,7 @@
               <label for="phone">Phone</label>
               <input type="tel" class="form-control" name="phone" value="{{ $learner->phone }}"/>
           </div>
-          <div class="form-group">
-              <label for="password">Password</label>
-              <input type="text" class="form-control" name="password" value="{{ $learner->password }}"/>
-          </div>
+         
           <button type="submit" class="btn btn-block btn-danger">Update User</button>
       </form>
   </div>

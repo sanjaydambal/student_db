@@ -7,6 +7,10 @@
     .push-top {
       margin-top: 50px;
     }
+    .error-message {
+      color: red;
+      font-size: 12px;
+    }
 </style>
 <div class="card push-top">
   <div class="card-header">
@@ -22,26 +26,69 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="{{ route('learners.store') }}">
+      <form id="create-form" method="post" action="{{ route('learners.store') }}">
           <div class="form-group">
               @csrf
               <label for="name">Name</label>
-              <input type="text" class="form-control" name="name"/>
+              <input type="text" class="form-control" name="name" id="name" />
+              <span class="error-message" id="name-error"></span>
           </div>
           <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" class="form-control" name="email"/>
+              <input type="email" class="form-control" name="email" id="email" />
+              <span class="error-message" id="email-error"></span>
           </div>
           <div class="form-group">
               <label for="phone">Phone</label>
-              <input type="tel" class="form-control" name="phone"/>
+              <input type="tel" class="form-control" name="phone" id="phone" />
+              <span class="error-message" id="phone-error"></span>
           </div>
-          <div class="form-group">
-              <label for="password">Password</label>
-              <input type="text" class="form-control" name="password"/>
-          </div>
+          
           <button type="submit" class="btn btn-block btn-danger">Create User</button>
       </form>
   </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#create-form').submit(function(event) {
+      event.preventDefault(); // Prevent form submission
+      
+      // Reset previous error messages
+      $('.error-message').text('');
+      
+      // Get form input values
+      var name = $('#name').val();
+      var email = $('#email').val();
+      var phone = $('#phone').val();
+      var password = $('#password').val();
+      
+      // Perform validation
+      var isValid = true;
+      
+      if (name.trim() === '') {
+        $('#name-error').text('Please enter a name.');
+        isValid = false;
+      }
+      
+      if (email.trim() === '' || email.indexOf('@') === -1) {
+        $('#email-error').text('Please enter a valid email.');
+        isValid = false;
+      }
+      
+      if (phone.trim() === '' || !(/^\d{10}$/.test(phone))) {
+        $('#phone-error').text('Please enter a 10-digit phone number.');
+        isValid = false;
+      }
+      
+   
+      
+      // If validation passes, submit the form
+      if (isValid) {
+        this.submit();
+      }
+    });
+  });
+</script>
 @endsection
