@@ -53,18 +53,18 @@
 <script>
   $(document).ready(function() {
     $('#create-form').submit(function(event) {
-      event.preventDefault(); // Prevent form submission
+      event.preventDefault(); 
       
-      // Reset previous error messages
+      
       $('.error-message').text('');
       
-      // Get form input values
+  
       var name = $('#name').val();
       var email = $('#email').val();
       var phone = $('#phone').val();
       var password = $('#password').val();
       
-      // Perform validation
+    
       var isValid = true;
       
       if (name.trim() === '') {
@@ -84,7 +84,6 @@
       
    
       
-      // If validation passes, submit the form
       if (isValid) {
         this.submit();
       }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Learner; // Import the Learner model
+use App\Models\Learner; 
 
 class LearnerController extends Controller
 {
@@ -36,7 +36,7 @@ class LearnerController extends Controller
             'phone' => 'required|numeric',
             
         ]);
-        $learner = Learner::create($storeData); // Update class name to use uppercase 'L'
+        $learner = Learner::create($storeData); 
         return redirect('/learners')->with('completed', 'Learner has been saved!');
     }
 
@@ -53,7 +53,7 @@ class LearnerController extends Controller
      */
     public function edit(string $id)
     {
-        $learner = Learner::findOrFail($id); // Update class name to use uppercase 'L'
+        $learner = Learner::findOrFail($id); 
         return view('edit', compact('learner'));
     }
 
